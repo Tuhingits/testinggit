@@ -1,0 +1,57 @@
+
+insert into course(course_id,title,dept_name,credits)values('Bio-101','intro.to Biology','Biology','4');
+insert into course(course_id,title,dept_name,credits)values('CS-399','Intro.to Computer Science','Comp.Sci','4');
+insert into course(course_id,title,dept_name,credits)values('CS-190','Game Design','Comp.Sci','4');
+insert into course(course_id,title,dept_name,credits)values('CS-315','Robotics','Comp.Sci','3');
+insert into course(course_id,title,dept_name,credits)values('CS-319','Image Processing','Comp.Sci','3');
+insert into course(course_id,title,dept_name,credits)values('CS-347','Database System','Comp.Sci','3');
+insert into course(course_id,title,dept_name,credits)values('EE-181','Intro.to Digital System','Elec.Eng','3');
+insert into course(course_id,title,dept_name,credits)values('FIN-201','Invastment Banking','Finance','3');
+insert into course(course_id,title,dept_name,credits)values('HIS-351','world History','History','3');
+insert into course(course_id,title,dept_name,credits)values('MU-199','Music Video Production','Music','3');
+insert into course(course_id,title,dept_name,credits)values('Phy-101','Physical principles','Physics','4');
+select * from course
+
+insert into prereq(course_id,preeeq_id)values('Bio-301','Bio-101');
+insert into prereq(course_id,preeeq_id)values('Bio-399','Bio-101');
+insert into prereq(course_id,preeeq_id)values('CS-190','CS-101');
+insert into prereq(course_id,preeeq_id)values('Cs-315','CS-101');
+insert into prereq(course_id,preeeq_id)values('Cs-319','CS-101');
+insert into prereq(course_id,preeeq_id)values('Cs-347','CS-101');
+insert into prereq(course_id,preeeq_id)values('EE-181','PHY-101');
+
+insert into instructor(Id,name,dept_name,salary)values('10101','Srinivasan','comp.Sci','65000');
+insert into instructor(Id,name,dept_name,salary)values('12121','wu','Finance','90000');
+insert into instructor(Id,name,dept_name,salary)values('15151','Mozart','Music','40000');
+insert into instructor(Id,name,dept_name,salary)values('22222','Einstein','Physics','95000');
+insert into instructor(Id,name,dept_name,salary)values('32343','EI Said','histroy','60000');
+insert into instructor(Id,name,dept_name,salary)values('45565','Gold','Physics','87000');
+insert into instructor(Id,name,dept_name,salary)values('58583','Katz','Comp.Sci','75000');
+insert into instructor(Id,name,dept_name,salary)values('76543','Califieri','histroy','62000');
+insert into instructor(Id,name,dept_name,salary)values('76766','Crick','Biology','72000');
+insert into instructor(Id,name,dept_name,salary)values('83821','Brandt','Comp.Sci','92000');
+insert into instructor(Id,name,dept_name,salary)values('98345','Kim','Elec.Eng','80000');
+
+
+soluation
+select * from course
+
+select distinct dept_name from Department
+
+select * from instructor 
+where dept_name='histroy'
+
+select instructor.Id, instructor.dept_name 
+from instructor join  Department on instructor.dept_name=Department.dept_name
+where Department.budget>95000
+
+select * from instructor
+where dept_name='Comp.Sci' and salary>80000
+
+select instructor.name,course.title from instructor
+join course on instructor.dept_name=course.dept_name
+where instructor.dept_name=course.dept_name
+
+select instructor.name from instructor
+where salary <(select min(salary )as salary from instructor
+where dept_name='Comp.Sci')
